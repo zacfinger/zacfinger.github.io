@@ -36,7 +36,7 @@ $(document).ready(function(){
         $("#carousel-img-container").height(carouselHeight);
 
         // Put left-most image in staging area behind stage left
-        // "Show" image to removes display:none style
+        // "Show" image to remove display:none style
         // Image is still at opacity 0 because of class stageLeft
         // until class is removed.
         $(carouselImgs[leftIndex]).addClass("stageLeft");
@@ -64,23 +64,55 @@ $(document).ready(function(){
         // Decrement current index
         currentCarouselIndex = leftIndex;
 
-        console.log(currentCarouselIndex);
-
     }
 
     function rightArrowClick() {
 
-        // Increment current index
-        currentCarouselIndex += 1;
+        // Get index of image currently in view
+        // The left-most of the two images to move
+        var leftIndex = currentCarouselIndex;
 
-        // roll back around to end if < 0
-        if(currentCarouselIndex == carouselImgs.length){
-            currentCarouselIndex = 0;
+        // Get index of image to the right
+        var rightIndex = currentCarouselIndex + 1;
+
+        // roll back around to beginning if > length
+        if(rightIndex == carouselImgs.length){
+            rightIndex = 0;
         }
 
-        hideAllPhotos();
+        // Get current height of carousel as computed by browser
+        // Set height so that moving images does not move other elements on page
+        var carouselHeight = $("#carousel-img-container").height();
+        $("#carousel-img-container").height(carouselHeight);
 
-        $(carouselImgs[currentCarouselIndex]).show();
+        // Get current computed height of img
+        // Set height so that img is not adjusted as it moves
+        var currentImgHeight = $(carouselImgs[leftIndex]).height();
+        $(carouselImgs[leftIndex]).height(currentImgHeight);
+
+        // move current image right
+        $(carouselImgs[leftIndex]).addClass('moveLeft');
+
+        // Put right-most image in staging area behind stage right
+        // "Show" image to remove display:none style
+        // Image is still at opacity 0 because of class stageRight
+        // until class is removed.
+        $(carouselImgs[rightIndex]).addClass("stageRight");
+        $(carouselImgs[rightIndex]).show();
+
+        // move left-most image right
+        $(carouselImgs[rightIndex]).removeClass('stageRight');
+
+        setTimeout(function(){ 
+            hideAllPhotos(rightIndex); 
+            $("#carousel-img-container").css("height", "");
+            $(carouselImgs[leftIndex]).css("height", "");
+            $(carouselImgs[leftIndex]).removeClass('moveLeft');
+
+        }, 700);
+
+        // Decrement current index
+        currentCarouselIndex = rightIndex;
         
     }
     

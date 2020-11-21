@@ -18,6 +18,7 @@ html, body {
 .carousel-img {
     transition: 0.7s;
     transition-timing-function: ease-out;
+    /*position: absolute;*/
 }
 
 .carousel-img.moveRight {
@@ -28,8 +29,22 @@ html, body {
     opacity: 0;
 }
 
+.carousel-img.moveLeft {
+    transition: 0.7s;
+    transition-timing-function: ease-out;
+    position: absolute;
+    margin-left: -150% !important;
+    opacity: 0;
+}
+
 .carousel-img.stageLeft {
     opacity: 0;
     position: absolute;
     margin-left: -150% !important;
+}
+
+.carousel-img.stageRight {
+    opacity: 0;
+    position: absolute;
+    margin-left: 50% !important;
 }

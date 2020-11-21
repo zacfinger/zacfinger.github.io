@@ -59,7 +59,7 @@ $(document).ready(function(){
             $(carouselImgs[rightIndex]).css("height", "");
             $(carouselImgs[rightIndex]).removeClass('moveRight');
 
-        }, 700);
+        }, 1500);
 
         // Decrement current index
         currentCarouselIndex = leftIndex;

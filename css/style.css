@@ -15,14 +15,20 @@ html, body {
     margin-bottom: 1rem !important;
 }
 
+#carousel-img-container {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+
 .carousel-img {
-    transition: 0.7s;
+    transition: 1.5s;
     transition-timing-function: ease-out;
-    /*position: absolute;*/
+    width: 100%;
+    
 }
 
 .carousel-img.moveRight {
-    transition: 0.7s;
+    transition: 1.5s;
     transition-timing-function: ease-out;
     position: absolute;
     margin-left: 50% !important;
@@ -30,7 +36,7 @@ html, body {
 }
 
 .carousel-img.moveLeft {
-    transition: 0.7s;
+    transition: 1.5s;
     transition-timing-function: ease-out;
     position: absolute;
     margin-left: -150% !important;

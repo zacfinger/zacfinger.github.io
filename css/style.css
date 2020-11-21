@@ -16,14 +16,20 @@ html, body {
 }
 
 .carousel-img {
-    transition: 0.4s;
+    transition: 0.7s;
     transition-timing-function: ease-out;
 }
 
 .carousel-img.moveRight {
-    transition: 0.4s;
+    transition: 0.7s;
     transition-timing-function: ease-out;
     position: absolute;
     margin-left: 50% !important;
     opacity: 0;
+}
+
+.carousel-img.stageLeft {
+    opacity: 0;
+    position: absolute;
+    margin-left: -150% !important;
 }

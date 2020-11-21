@@ -4,9 +4,13 @@ $(document).ready(function(){
     
     var carouselImgs = document.getElementsByClassName("carousel-img");
 
-    function hideAllPhotos(){
+    // Hides all photoes, except the image at 
+    // the index specified by the optional parameter
+    function hideAllPhotos(excludeImg = -1){
         for(var i = 0; i < carouselImgs.length; i++){
-            $(carouselImgs[i]).hide();
+            if(i != excludeImg){
+                $(carouselImgs[i]).hide();
+            }
         }
     }
 
@@ -14,38 +18,53 @@ $(document).ready(function(){
 
     function leftArrowClick() {
 
-        // get old index of image
-        var oldIndex = currentCarouselIndex;
+        // Get index of image currently in view
+        // The right-most of the two images to move
+        var rightIndex = currentCarouselIndex;
+
+        // Get index of image to the left
+        var leftIndex = currentCarouselIndex - 1;
+
+        // roll back around to end if < 0
+        if(leftIndex < 0){
+            leftIndex = carouselImgs.length - 1;
+        }
 
         // Get current height of carousel as computed by browser
-        // Set height so that moving image does not move other elements
+        // Set height so that moving images does not move other elements on page
         var carouselHeight = $("#carousel-img-container").height();
         $("#carousel-img-container").height(carouselHeight);
 
+        // Put left-most image in staging area behind stage left
+        // "Show" image to removes display:none style
+        // Image is still at opacity 0 because of class stageLeft
+        // until class is removed.
+        $(carouselImgs[leftIndex]).addClass("stageLeft");
+        $(carouselImgs[leftIndex]).show();
+
         // Get current computed height of img
         // Set height so that img is not adjusted as it moves
-        var currentImgHeight = $(carouselImgs[currentCarouselIndex]).height();
-        $(carouselImgs[currentCarouselIndex]).height(currentImgHeight);
+        var currentImgHeight = $(carouselImgs[rightIndex]).height();
+        $(carouselImgs[rightIndex]).height(currentImgHeight);
 
-        // move current image left
-        $(carouselImgs[currentCarouselIndex]).addClass('moveRight');
+        // move current image right
+        $(carouselImgs[rightIndex]).addClass('moveRight');
 
-        // Decrement current index
-        currentCarouselIndex -= 1;
-
-        // roll back around to end if < 0
-        if(currentCarouselIndex < 0){
-            currentCarouselIndex = carouselImgs.length - 1;
-        }
+        // move left-most image right
+        $(carouselImgs[leftIndex]).removeClass('stageLeft');
 
         setTimeout(function(){ 
-            hideAllPhotos(); 
+            hideAllPhotos(leftIndex); 
             $("#carousel-img-container").css("height", "");
-            $(carouselImgs[currentCarouselIndex]).show();
-            $(carouselImgs[oldIndex]).css("height", "");
-            $(carouselImgs[oldIndex]).removeClass('moveRight');
-        }, 400);
+            $(carouselImgs[rightIndex]).css("height", "");
+            $(carouselImgs[rightIndex]).removeClass('moveRight');
 
+        }, 700);
+
+        // Decrement current index
+        currentCarouselIndex = leftIndex;
+
+        console.log(currentCarouselIndex);
 
     }
 

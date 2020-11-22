@@ -7,10 +7,6 @@ html, body {
     height: 93.75% !important;
 }
 
-.overflow-x-hidden {
-    overflow-x: hidden !important;
-}
-
 #carousel {
     margin-bottom: 1rem !important;
 }
@@ -21,38 +17,22 @@ html, body {
 }
 
 .carousel-img {
+    opacity: 0;
+    position: absolute;
+    width:100%;
     transition: 1.5s;
     transition-timing-function: ease-out;
-    width: 100%;
-    
 }
 
-.carousel-img.moveRight {
-    transition: 1.5s;
-    transition-timing-function: ease-out;
-    position: absolute;
-    margin-left: 50% !important;
-    opacity: 0;
+.carousel-img.current {
+    opacity: 1;
+    position: relative;
 }
 
 .carousel-img.moveLeft {
-    transition: 1.5s;
-    transition-timing-function: ease-out;
-    position: absolute;
-    margin-left: -150% !important;
-    opacity: 0;
+    transform: translateX(-100%);
 }
 
-.carousel-img.stageLeft {
-    transition: 0s;
-    opacity: 0;
-    position: absolute;
-    margin-left: -150% !important;
-}
-
-.carousel-img.stageRight {
-    transition: 0s;
-    opacity: 0;
-    position: absolute;
-    margin-left: 50% !important;
+.carousel-img.moveRight {
+    transform: translateX(100%);
 }

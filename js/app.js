@@ -2,118 +2,172 @@ $(document).ready(function(){
     
     var carouselImgs = document.getElementsByClassName("carousel-img");
 
-    var currentCarouselIndex = Math.floor(carouselImgs.length / 2);
+    //var currentCarouselIndex = Math.floor(carouselImgs.length / 2);
+    var currentCarouselIndex = 0;
 
-    // Hides all photoes, except the image at 
-    // the index specified by the optional parameter
-    function hideAllPhotos(excludeImg = -1){
-        for(var i = 0; i < carouselImgs.length; i++){
-            if(i != excludeImg){
-                $(carouselImgs[i]).hide();
-            }
+    // Helper function to return a valid incremented index
+    function incrementIndex(i) {
+        i += 1;
+
+        // roll back around to beginning if > length
+        if(i == carouselImgs.length){
+            i = 0; 
         }
+
+        return i;
     }
 
-    $(carouselImgs[currentCarouselIndex]).show();
+    // Helper function to return a valid decremented index
+    function decrementIndex(i) {
+        i -= 1;
+
+        if(i < 0){
+            i = carouselImgs.length - 1; 
+        }
+
+        return i;
+    }
 
     function leftArrowClick() {
 
-        // Get index of image currently in view
-        // The right-most of the two images to move
-        var rightIndex = currentCarouselIndex;
+        // Get index of previous image
+        var oldLeftIndex = decrementIndex(currentCarouselIndex);
 
-        // Get index of image to the left
-        var leftIndex = currentCarouselIndex - 1;
+        // Get index of image to the right
+        var oldRightIndex = incrementIndex(currentCarouselIndex);
 
-        // roll back around to end if < 0
-        if(leftIndex < 0){
-            leftIndex = carouselImgs.length - 1;
-        }
+        // Get index of slide to update to "active" class
+        var curIndex = oldLeftIndex;
+
+        // Get index of slide to update to "moveLeft" class
+        var leftIndex = decrementIndex(curIndex);
+
+        // Get index of slide to update to "next" class
+        var rightIndex = incrementIndex(curIndex);
 
         // Get current height of carousel as computed by browser
         // Set height so that moving images does not move other elements on page
         var carouselHeight = $("#carousel-img-container").height();
         $("#carousel-img-container").height(carouselHeight);
+        /*
+        // Get current computed height and width of img
+        // Set height/width so that img is not adjusted as it moves
+        var currentImgHeight = $(carouselImgs[currentCarouselIndex]).height();
+        $(carouselImgs[currentCarouselIndex]).height(currentImgHeight);
+        var currentImgWidth = $(carouselImgs[currentCarouselIndex]).width();
+        $(carouselImgs[currentCarouselIndex]).width(currentImgWidth);
+        
+        // Get current computed height and width of left img
+        // Set height/width so that img is not adjusted as it moves
+        var oldLeftImgHeight = $(carouselImgs[oldLeftIndex]).height();
+        $(carouselImgs[oldLeftIndex]).height(oldLeftImgHeight);
+        var oldLeftImgWidth = $(carouselImgs[oldLeftIndex]).width();
+        $(carouselImgs[oldLeftIndex]).width(oldLeftImgWidth);
 
-        // Get current computed height of img
-        // Set height so that img is not adjusted as it moves
-        var currentImgHeight = $(carouselImgs[rightIndex]).height();
-        $(carouselImgs[rightIndex]).height(currentImgHeight);
+        // Get current computed height and width of right img
+        // Set height/width so that img is not adjusted as it moves
+        var oldRightImgHeight = $(carouselImgs[oldRightIndex]).height();
+        $(carouselImgs[oldRightIndex]).height(oldRightImgHeight);
+        var oldRightImgWidth = $(carouselImgs[oldRightIndex]).width();
+        $(carouselImgs[oldRightIndex]).width(oldRightImgWidth);*/
 
-        // Put left-most image in staging area behind stage left
-        // "Show" image to remove display:none style
-        // Image is still at opacity 0 because of class stageLeft
-        // until class is removed.
-        $(carouselImgs[leftIndex]).addClass("stageLeft");
-        $(carouselImgs[leftIndex]).show();
+        // Remove classes representing prior state
+        $(carouselImgs[oldLeftIndex]).removeClass("moveLeft");
+        $(carouselImgs[currentCarouselIndex]).removeClass("current");
+        $(carouselImgs[oldRightIndex]).removeClass("moveRight");
 
-        // move current image right
-        $(carouselImgs[rightIndex]).addClass('moveRight');
-
-        // move left-most image right
-        $(carouselImgs[leftIndex]).removeClass('stageLeft');
+        // Update appropriate elements with new classes
+        $(carouselImgs[leftIndex]).addClass("moveLeft");
+        $(carouselImgs[curIndex]).addClass("current");
+        $(carouselImgs[rightIndex]).addClass("moveRight");
 
         setTimeout(function(){ 
-            hideAllPhotos(leftIndex); 
+            // Remove arbitrary height/weight settings
+            // Image is still at opacity 0 because of class moveRight
             $("#carousel-img-container").css("height", "");
-            $(carouselImgs[rightIndex]).css("height", "");
-            $(carouselImgs[rightIndex]).removeClass('moveRight');
+            //$(carouselImgs[currentCarouselIndex]).css("height", "");
+            //$(carouselImgs[currentCarouselIndex]).css("width", "");
+            //$(carouselImgs[oldLeftIndex]).css("height", "");
+            //$(carouselImgs[oldLeftIndex]).css("width", "");
+            //$(carouselImgs[oldRightIndex]).css("height", "");
+            //$(carouselImgs[oldRightIndex]).css("width", "");
+
+            // Increment current index
+            currentCarouselIndex = curIndex;
 
         }, 1500);
-
-        // Decrement current index
-        currentCarouselIndex = leftIndex;
 
     }
 
     function rightArrowClick() {
 
-        // Get index of image currently in view
-        // The left-most of the two images to move
-        var leftIndex = currentCarouselIndex;
+        // Get index of previous image
+        var oldLeftIndex = decrementIndex(currentCarouselIndex);
 
         // Get index of image to the right
-        var rightIndex = currentCarouselIndex + 1;
+        var oldRightIndex = incrementIndex(currentCarouselIndex);
 
-        // roll back around to beginning if > length
-        if(rightIndex == carouselImgs.length){
-            rightIndex = 0;
-        }
+        // Get index of slide to update to "active" class
+        var curIndex = oldRightIndex;
+
+        // Get index of slide to update to "moveLeft" class
+        var leftIndex = decrementIndex(curIndex);
+
+        // Get index of slide to update to "moveRight" class
+        var rightIndex = incrementIndex(curIndex);
 
         // Get current height of carousel as computed by browser
         // Set height so that moving images does not move other elements on page
         var carouselHeight = $("#carousel-img-container").height();
         $("#carousel-img-container").height(carouselHeight);
+        /*
+        // Get current computed height and width of img
+        // Set height/width so that img is not adjusted as it moves
+        var currentImgHeight = $(carouselImgs[currentCarouselIndex]).height();
+        $(carouselImgs[currentCarouselIndex]).height(currentImgHeight);
+        var currentImgWidth = $(carouselImgs[currentCarouselIndex]).width();
+        $(carouselImgs[currentCarouselIndex]).width(currentImgWidth);
+        
+        // Get current computed height and width of left img
+        // Set height/width so that img is not adjusted as it moves
+        var oldLeftImgHeight = $(carouselImgs[oldLeftIndex]).height();
+        $(carouselImgs[oldLeftIndex]).height(oldLeftImgHeight);
+        var oldLeftImgWidth = $(carouselImgs[oldLeftIndex]).width();
+        $(carouselImgs[oldLeftIndex]).width(oldLeftImgWidth);
 
-        // Get current computed height of img
-        // Set height so that img is not adjusted as it moves
-        var currentImgHeight = $(carouselImgs[leftIndex]).height();
-        $(carouselImgs[leftIndex]).height(currentImgHeight);
+        // Get current computed height and width of right img
+        // Set height/width so that img is not adjusted as it moves
+        var oldRightImgHeight = $(carouselImgs[oldRightIndex]).height();
+        $(carouselImgs[oldRightIndex]).height(oldRightImgHeight);
+        var oldRightImgWidth = $(carouselImgs[oldRightIndex]).width();
+        $(carouselImgs[oldRightIndex]).width(oldRightImgWidth);*/
 
-        // Put right-most image in staging area behind stage right
-        // "Show" image to remove display:none style
-        // Image is still at opacity 0 because of class stageRight
-        // until class is removed.
-        $(carouselImgs[rightIndex]).addClass("stageRight");
-        $(carouselImgs[rightIndex]).show();
+        // Remove classes representing prior state
+        $(carouselImgs[oldLeftIndex]).removeClass("moveLeft");
+        $(carouselImgs[currentCarouselIndex]).removeClass("current");
+        $(carouselImgs[oldRightIndex]).removeClass("moveRight");
 
-        // move current image right
-        $(carouselImgs[leftIndex]).addClass('moveLeft');
-
-        // move left-most image right
-        $(carouselImgs[rightIndex]).removeClass('stageRight');
+        // Update appropriate elements with new classes
+        $(carouselImgs[leftIndex]).addClass("moveLeft");
+        $(carouselImgs[curIndex]).addClass("current");
+        $(carouselImgs[rightIndex]).addClass("moveRight");
 
         setTimeout(function(){ 
-            hideAllPhotos(rightIndex); 
+            // Remove arbitrary height/weight settings
+            // Image is still at opacity 0 because of class moveLeft
             $("#carousel-img-container").css("height", "");
-            $(carouselImgs[leftIndex]).css("height", "");
-            $(carouselImgs[leftIndex]).removeClass('moveLeft');
+            //$(carouselImgs[currentCarouselIndex]).css("height", "");
+            //$(carouselImgs[currentCarouselIndex]).css("width", "");
+            //$(carouselImgs[oldLeftIndex]).css("height", "");
+            //$(carouselImgs[oldLeftIndex]).css("width", "");
+            //$(carouselImgs[oldRightIndex]).css("height", "");
+            //$(carouselImgs[oldRightIndex]).css("width", "");
 
-        }, 700);
+            // Increment current index
+            currentCarouselIndex = curIndex;
 
-        // Decrement current index
-        currentCarouselIndex = rightIndex;
-        
+        }, 1500);
+  
     }
     
     var leftArrows = document.getElementsByClassName("left-arrow");

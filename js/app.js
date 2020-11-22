@@ -1,8 +1,8 @@
 $(document).ready(function(){
     
-    var currentCarouselIndex = 0;
-    
     var carouselImgs = document.getElementsByClassName("carousel-img");
+
+    var currentCarouselIndex = Math.floor(carouselImgs.length / 2);
 
     // Hides all photoes, except the image at 
     // the index specified by the optional parameter
@@ -35,17 +35,17 @@ $(document).ready(function(){
         var carouselHeight = $("#carousel-img-container").height();
         $("#carousel-img-container").height(carouselHeight);
 
+        // Get current computed height of img
+        // Set height so that img is not adjusted as it moves
+        var currentImgHeight = $(carouselImgs[rightIndex]).height();
+        $(carouselImgs[rightIndex]).height(currentImgHeight);
+
         // Put left-most image in staging area behind stage left
         // "Show" image to remove display:none style
         // Image is still at opacity 0 because of class stageLeft
         // until class is removed.
         $(carouselImgs[leftIndex]).addClass("stageLeft");
         $(carouselImgs[leftIndex]).show();
-
-        // Get current computed height of img
-        // Set height so that img is not adjusted as it moves
-        var currentImgHeight = $(carouselImgs[rightIndex]).height();
-        $(carouselImgs[rightIndex]).height(currentImgHeight);
 
         // move current image right
         $(carouselImgs[rightIndex]).addClass('moveRight');
@@ -90,15 +90,15 @@ $(document).ready(function(){
         var currentImgHeight = $(carouselImgs[leftIndex]).height();
         $(carouselImgs[leftIndex]).height(currentImgHeight);
 
-        // move current image right
-        $(carouselImgs[leftIndex]).addClass('moveLeft');
-
         // Put right-most image in staging area behind stage right
         // "Show" image to remove display:none style
         // Image is still at opacity 0 because of class stageRight
         // until class is removed.
         $(carouselImgs[rightIndex]).addClass("stageRight");
         $(carouselImgs[rightIndex]).show();
+
+        // move current image right
+        $(carouselImgs[leftIndex]).addClass('moveLeft');
 
         // move left-most image right
         $(carouselImgs[rightIndex]).removeClass('stageRight');

@@ -44,12 +44,14 @@ html, body {
 }
 
 .carousel-img.stageLeft {
+    transition: 0s;
     opacity: 0;
     position: absolute;
     margin-left: -150% !important;
 }
 
 .carousel-img.stageRight {
+    transition: 0s;
     opacity: 0;
     position: absolute;
     margin-left: 50% !important;

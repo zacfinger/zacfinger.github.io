@@ -1,10 +1,18 @@
 html, body {
     height: 100%;
+    font-family: monospace;
 }
 
-/* Custom height class to fill 1/2 of 1/2 of the remaining 25% of height */
-.h-94 {
-    height: 93.75% !important;
+.w-lg-75 {
+    width: 100%;
+}
+
+/* Custom width class to fill 
+75% of container if viewport > 992px, 100% otherwise */
+@media (min-width: 992px){
+	.w-lg-75 {
+		width: 75%;
+	}
 }
 
 #carousel {
@@ -35,4 +43,18 @@ html, body {
 
 .carousel-img.moveRight {
     transform: translateX(100%);
+}
+
+#scrollbox {
+    height: 8rem;
+    overflow: auto;
+    background-color: lightgray;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+@media (min-width: 992px){
+	#scrollbox {
+		font-size: 1.5rem;
+	}
 }

@@ -13,6 +13,7 @@ References used:
 * https://www.bitdegree.org/learn/css-form
 * https://stackoverflow.com/questions/11260135/css-multiple-inputtype-selectors
 * https://medium.com/@asjas/using-formspree-io-on-your-github-pages-a60c290d1ee
+* https://stackoverflow.com/questions/12875911/how-can-i-make-my-input-type-submit-an-image
 -->
 
 <!doctype html>
@@ -176,11 +177,13 @@ References used:
                      </div>
                   </div>
                   <input type="hidden" name="_next" value="thanks.html" />
+                  <div class="form-group row">
+                     <div class="col-12">
+                        <input type="image" src="img/buttons.png" name="submit" value="submit">
+                     </div>
+                  </div>
                </form>
-            </div>
-            <div class="col-12 offset-md-4 col-md-8">
-               <img src="img/buttons.png" class="img-fluid">
-            </div>            
+            </div>         
          </div>
          <!-- /Contact form -->
 

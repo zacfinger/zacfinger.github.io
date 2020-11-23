@@ -10,7 +10,9 @@ References used:
 * https://api.jquery.com
 * https://css-tricks.com/controlling-css-animations-transitions-javascript/
 * https://www.w3schools.com/jsref/
-* 
+* https://www.bitdegree.org/learn/css-form
+* https://stackoverflow.com/questions/11260135/css-multiple-inputtype-selectors
+* https://medium.com/@asjas/using-formspree-io-on-your-github-pages-a60c290d1ee
 -->
 
 <!doctype html>
@@ -31,7 +33,7 @@ References used:
       <div class="container-fluid">
          <nav class="navbar navbar-expand-sm navbar-light bg-white">
             <a class="navbar-brand" href="#">
-               <img src="img/title.png" width="45" alt="">
+               <img src="img/title.png" width="30" alt="">
             </a>
    
             <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -144,17 +146,36 @@ References used:
          <!-- Divider section -->
          <div class="row mt-5"></div>
 
+         <!-- Divider section -->
+         <div class="row mt-5"></div>
+
          <!-- Contact form -->
          <div class="row w-lg-75 m-auto">
-            <div class="col-12 col-lg-4 mb-4">
+            <div class="col-12 col-md-4 mb-4">
                <img src="img/contact.png" alt="Contact" class="img-fluid">
             </div>
-            <div class="d-none d-md-block col-md-4 d-lg-none"></div>
             <div class="col-12 col-md-8">
-               <form style="background-color:red;">
-                  <div class="form-row">
-                     Test
+               <form action="https://formspree.io/f/xjvpebyb" method="POST">
+                  <div class="form-group row">
+                     <label for="name" class="col-12 col-lg-3 col-form-label col-form-label-lg">Name</label>
+                     <div class="col-12 col-lg-9">
+                        <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your Name">
+                     </div>
                   </div>
+                  <div class="form-group row">
+                     <label for="_replyto" class="col-12 col-lg-3 col-form-label col-form-label-lg">Email</label>
+                     <div class="col-12 col-lg-9">
+                        <input type="email" class="form-control form-control-lg" id="_replyto" name="_replyto" placeholder="ny152@aol.com">
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <label for="message" class="col-12 col-lg-3 col-form-label col-form-label-lg">Message</label>
+                     <div class="col-12 col-lg-9">
+                        <textarea rows="3" class="form-control form-control-lg" id="message" name="message" placeholder="Hello world!"></textarea>
+                        Secured by Formspree.io
+                     </div>
+                  </div>
+                  <input type="hidden" name="_next" value="thanks.html" />
                </form>
             </div>
             <div class="col-12 offset-md-4 col-md-8">
@@ -162,6 +183,19 @@ References used:
             </div>            
          </div>
          <!-- /Contact form -->
+
+         <!-- Divider section -->
+         <div class="row mt-5"></div>
+
+         <!-- Social media links -->
+         <div class="row w-lg-75 m-auto">
+            <div class="col-12 col-sm-8 d-flex justify-content-between text-center m-auto">
+               <img src="img/tw.png" class="img-fluid">
+               <img src="img/tw.png" class="img-fluid">
+               <img src="img/tw.png" class="img-fluid">
+            </div>
+         </div>
+         <!-- /Social media links -->
 
          <!-- Divider section -->
          <div class="row mt-5"></div>

@@ -185,7 +185,7 @@ $(document).ready(function(){
                 isMoving = false;
 
             }, 1500);
-            
+
         }
   
     }
@@ -205,5 +205,9 @@ $(document).ready(function(){
     });
 
     $("#year").html(new Date().getFullYear());
+
+    $(carouselImgs[0]).removeClass("moveRight");
+
+    setInterval(function(){ rightArrowClick() }, 5000);
 
 });

@@ -33,7 +33,7 @@ References used:
       <!-- Navbar -->
       <div class="container-fluid">
          <nav class="navbar navbar-expand-sm navbar-light bg-white">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                <img src="img/title.png" width="30" alt="">
             </a>
    
@@ -44,16 +44,16 @@ References used:
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                <li class="nav-item active">
-                  <a class="nav-link" href="#"><img src="img/main.png" alt="Info"><span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.html"><img src="img/main.png" alt="Main"><span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="code/"><img src="img/code.png" alt="Code"></a>
+                  <a class="nav-link" href="code.html"><img src="img/code.png" alt="Code"></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="shirts/"><img src="img/shirts.png" alt="Shirts"></a>
+                  <a class="nav-link" href="shirts.html"><img src="img/shirts.png" alt="Shirts"></a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="zines/"><img src="img/zines.png" alt="Zines"></a>
+                  <a class="nav-link" href="zines.html"><img src="img/zines.png" alt="Zines"></a>
                </li>
             </ul>
             </div>
@@ -154,19 +154,19 @@ References used:
                   <div class="form-group row">
                      <label for="name" class="col-12 col-lg-3 col-form-label col-form-label-lg">Name</label>
                      <div class="col-12 col-lg-9">
-                        <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your Name">
+                        <input required type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your Name">
                      </div>
                   </div>
                   <div class="form-group row">
                      <label for="_replyto" class="col-12 col-lg-3 col-form-label col-form-label-lg">Email</label>
                      <div class="col-12 col-lg-9">
-                        <input type="email" class="form-control form-control-lg" id="_replyto" name="_replyto" placeholder="ny152@aol.com">
+                        <input required type="email" class="form-control form-control-lg" id="_replyto" name="_replyto" placeholder="ny152@aol.com">
                      </div>
                   </div>
                   <div class="form-group row">
                      <label for="message" class="col-12 col-lg-3 col-form-label col-form-label-lg">Message</label>
                      <div class="col-12 col-lg-9">
-                        <textarea rows="3" class="form-control form-control-lg" id="message" name="message" placeholder="Hello world!"></textarea>
+                        <textarea required rows="3" class="form-control form-control-lg" id="message" name="message" placeholder="Hello world!"></textarea>
                         Powered by Formspree.io
                      </div>
                   </div>

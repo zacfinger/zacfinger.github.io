@@ -1,0 +1,225 @@
+<!--
+References used:
+* https://www.w3schools.com/howto/howto_js_slideshow.asp
+* https://getbootstrap.com/docs/4.0/
+* https://stackoverflow.com/questions/54417421/how-to-change-bootstrap-4-navbar-collapse-icon-with-custom-svg-image
+* https://stackoverflow.com/questions/11677886/twitter-bootstrap-div-in-container-with-100-height
+* https://stackoverflow.com/questions/50262517/bootstrap-4-row-fill-remaining-height
+* https://www.w3schools.com/jquery/
+* https://www.w3schools.com/cssref
+* https://api.jquery.com
+* https://css-tricks.com/controlling-css-animations-transitions-javascript/
+* https://www.w3schools.com/jsref/
+* https://www.bitdegree.org/learn/css-form
+* https://stackoverflow.com/questions/11260135/css-multiple-inputtype-selectors
+* https://medium.com/@asjas/using-formspree-io-on-your-github-pages-a60c290d1ee
+* https://stackoverflow.com/questions/12875911/how-can-i-make-my-input-type-submit-an-image
+* https://medium.com/better-programming/make-a-slideshow-with-automatic-and-manual-controls-using-html-css-and-javascript-b7e9305168f9
+* https://medium.com/@marcusmichaels/how-to-build-a-carousel-from-scratch-in-vanilla-js-9a096d3b98c9
+-->
+
+<!doctype html>
+<html lang="en">
+ <head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/style.css">
+   <title>Zac Finger</title>
+ </head>
+ <body id="main">
+
+   <div class="container-md">
+      <!-- Navbar -->
+         <nav class="navbar navbar-expand-sm navbar-light bg-white w-lg-75 m-auto">
+            <a class="navbar-brand" href="index.html">
+               <img src="img/title.png" width="30" alt="">
+            </a>
+   
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+         
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item">
+                  <a class="nav-link" href="index.html"><img src="img/code.png" alt="Code"></a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="shirts.html"><img src="img/shirts.png" alt="Shirts"></a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="zines.html"><img src="img/zines.png" alt="Zines"></a>
+               </li>
+               <li class="nav-item active">
+                  <a class="nav-link" href="info.html"><img src="img/info.png" alt="Info"><span class="sr-only">(current)</span></a>
+               </li>
+            </ul>
+            </div>
+         </nav>
+      <!-- /Navbar -->
+
+      <!-- Divider section -->
+      <div class="row mt-3"></div>
+
+      <!-- Content -->
+      
+      <div class="row mb-3">
+         <div class="col-12 col-lg-10 text-center m-auto">
+            <img src="img/info-banner.jpg" class="img-fluid">
+         </div>
+      </div>
+   
+      <!-- Carousel 1
+      <div id="carousel" class="row">
+         <!-- This element will be hidden on smaller screens
+         <div class="d-none d-lg-block col-md-1">
+            <img src="img/arrow-left.png" class="img-fluid left-arrow">
+         </div>
+         <div id="carousel-img-container" class="col-12 col-lg-10 text-center">
+            
+            <a href="code.html"><img src="img/code-banner.gif" class="carousel-img current moveRight"></a>
+            <a href="shirts.html"><img src="img/shirts-banner.gif" class="carousel-img moveRight"></a>
+            <a href="zines.html"><img src="img/zines-banner.gif" class="carousel-img moveLeft"></a>
+            
+         </div>
+         <div class="col-12 d-lg-none mt-3"></div>
+         <!-- The following 2 elements will be hidden on larger screens
+         <div class="col-3 col-sm-2 d-lg-none">
+            <img src="img/arrow-left.png" class="img-fluid left-arrow">
+         </div>
+         <div class="col-6 col-sm-8 d-lg-none">
+         </div>
+         <div class="col-3 col-sm-2 col-lg-1 text-right">
+            <img id="right-arrow" src="img/arrow-right.png" class="img-fluid">
+         </div>
+      </div>
+      <!-- /Carousel 1 -->
+
+      <!-- Bio -->
+      <div class="row w-lg-75 m-auto mb-3">
+         <div class="col-12 col-md-10 col-lg-8 m-auto">
+            <p class="h4">My name is Zac Finger and I'm a software developer and zine creator. 
+               I'm on the engineering team at a company in Tucson AZ. 
+               I'm the founder and co-organizer of the Tucson Zine Fest.</p>
+         </div>
+      </div>
+
+      <!-- Scrollbox 
+      <div class="row w-lg-75 m-auto mb-3">
+         <div class="col-12 col-lg-4 mb-4">
+            <img src="img/bio.png" alt="Bio" class="img-fluid">
+         </div>  
+         <div id="scrollbox" class="col-12 col-lg-8">
+            <p>
+               My name is Zac Finger and I'm a web developer. 
+               I'm on the engineering team at a company in Tucson AZ. 
+               I'm the founder and co-organizer of the Tucson Zine Fest.
+            </p> 
+               I've built business web applications with server side and client side logic in the following languages:
+            </p>
+            <ul>
+               <li>C#</li>
+               <li>ASP.net</li>
+               <li>Node</li>
+               <li>Angular</li>
+            </ul>
+         </div>            
+      </div>
+      <!-- /Scrollbox -->
+
+      <!-- Divider section -->
+      <div class="row mt-5"></div>
+
+      <!-- Resume download 
+      <div class="row w-lg-75 m-auto">
+         <div class="col-12 mb-4">
+            <img src="img/resume.png" alt="Resume" class="img-fluid">
+         </div>
+         <div class="col-3 col-sm-5 col-md-6 text-right">
+            <a href="assets/vitae.pdf" download><img src="img/adobe.png" class="img-fluid"></a>
+         </div>
+         <div class="col-9 col-sm-7 col-md-6 text-center">
+            <a href="assets/vitae.pdf" download><img src="img/download.png" class="img-fluid"></a>
+         </div>            
+      </div>
+      <!-- /Resume download -->
+
+      <!-- Divider section 
+      <div class="row mt-5"></div>
+
+      <!-- Divider section 
+      <div class="row mt-5"></div>
+
+      <!-- Contact form 
+      <div class="row w-lg-75 m-auto">
+         <div class="col-12 col-md-4 mb-4">
+            <img src="img/contact.png" alt="Contact" class="img-fluid">
+         </div>
+         <div class="col-12 col-md-8">
+            <form action="https://formspree.io/f/xjvpebyb" method="POST">
+               <div class="form-group row">
+                  <label for="name" class="col-12 col-lg-3 col-form-label col-form-label-lg">Name</label>
+                  <div class="col-12 col-lg-9">
+                     <input required type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your Name">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="_replyto" class="col-12 col-lg-3 col-form-label col-form-label-lg">Email</label>
+                  <div class="col-12 col-lg-9">
+                     <input required type="email" class="form-control form-control-lg" id="_replyto" name="_replyto" placeholder="ny152@aol.com">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="message" class="col-12 col-lg-3 col-form-label col-form-label-lg">Message</label>
+                  <div class="col-12 col-lg-9">
+                     <textarea required rows="3" class="form-control form-control-lg" id="message" name="message" placeholder="Hello world!"></textarea>
+                     Powered by Formspree.io
+                  </div>
+               </div>
+               <input type="hidden" name="_next" value="thanks.html" />
+               <div class="form-group row">
+                  <div class="col-12">
+                     <input class="img-fluid" type="image" src="img/submit.png" name="submit" value="submit">
+                  </div>
+               </div>
+            </form>
+         </div>         
+      </div>
+      <!-- /Contact form -->
+
+      <!-- Divider section
+      <div class="row mt-5"></div>
+
+      <!-- Social media links -->
+      <div class="row w-lg-75 m-auto">
+         <div class="col-12 col-sm-8 d-flex justify-content-between text-center m-auto">
+            <a href="https://github.com/zacfinger/" target="_blank"><img src="img/gh.png" class="img-fluid"></a>
+            <a href="https://www.linkedin.com/in/zac-finger-67723579/" target="_blank"><img src="img/in.png" class="img-fluid"></a>
+            <a href="https://twitter.com/zacfinger" target="_blank"><img src="img/tw.png" class="img-fluid"></a>
+         </div>
+      </div>
+      <!-- /Social media links -->
+
+      <!-- Divider section -->
+      <div class="row mt-5"></div>
+      
+      <div class="row w-lg-75 m-auto">
+         <div class="col-12 text-center mb-5">
+            (c) <span id="year"></span> ZAC FINGER
+         </div>
+      </div>
+
+      <!-- /Content -->
+   </div>
+
+   <!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   <script src="js/app.js"></script>
+   </body>
+</html>
